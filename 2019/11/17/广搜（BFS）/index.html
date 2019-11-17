@@ -6,13 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: 广搜 | ZJH&#39;s Blog</title>
+  <title>广搜 | ZJH&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="ZJH&#39;s Blog">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;tags&#x2F;%E5%B9%BF%E6%90%9C&#x2F;index.html">
+  <meta name="description" content="广度优先搜索Breadth First Search，BFS是从根节点开始，沿着树的宽度遍历树的节点。如果所有节点均被访问，则算法中止。 是一种用于图的查找算法，可帮助回答两类问题: 第一类问题:   从节点A出发，前往节点B的路径 第二类问题:   从节点A出发，前往节点B的哪条路径最短  1005: Hero In Maze时间限制(普通&#x2F;Java):1000MS&#x2F;10000MS     内存">
+<meta name="keywords" content="广搜">
+<meta property="og:type" content="article">
+<meta property="og:title" content="广搜">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;17&#x2F;%E5%B9%BF%E6%90%9C%EF%BC%88BFS%EF%BC%89&#x2F;index.html">
 <meta property="og:site_name" content="ZJH&#39;s Blog">
+<meta property="og:description" content="广度优先搜索Breadth First Search，BFS是从根节点开始，沿着树的宽度遍历树的节点。如果所有节点均被访问，则算法中止。 是一种用于图的查找算法，可帮助回答两类问题: 第一类问题:   从节点A出发，前往节点B的路径 第二类问题:   从节点A出发，前往节点B的哪条路径最短  1005: Hero In Maze时间限制(普通&#x2F;Java):1000MS&#x2F;10000MS     内存">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-11-17T14:47:58.883Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="ZJH&#39;s Blog" type="application/atom+xml">
@@ -131,36 +135,86 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-广搜（BFS）" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/11/17/%E5%B9%BF%E6%90%9C%EF%BC%88BFS%EF%BC%89/" class="archive-article-date">
-  	<time datetime="2019-11-17T07:33:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-17</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/11/17/%E5%B9%BF%E6%90%9C%EF%BC%88BFS%EF%BC%89/">广搜</a>
+    <h1 class="article-title" itemprop="name">
+      广搜
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2019/11/17/%E5%B9%BF%E6%90%9C%EF%BC%88BFS%EF%BC%89/" class="archive-article-date">
+  	<time datetime="2019-11-17T07:33:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-17</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="广度优先搜索"><a href="#广度优先搜索" class="headerlink" title="广度优先搜索"></a>广度优先搜索</h2><p>Breadth First Search，BFS是从根节点开始，沿着树的宽度遍历树的节点。如果所有节点均被访问，则算法中止。 是一种用于图的查找算法，可帮助回答两类问题:</p>
+<p><strong>第一类问题:</strong>   从节点A出发，前往节点B的路径</p>
+<p><strong>第二类问题:</strong>   从节点A出发，前往节点B的哪条路径最短</p>
+<hr>
+<h2 id="1005-Hero-In-Maze"><a href="#1005-Hero-In-Maze" class="headerlink" title="1005: Hero In Maze"></a><strong>1005: Hero In Maze</strong></h2><p><strong>时间限制(普通/Java):1000MS/10000MS     内存限制:65536KByte总提交: 5700            测试通过:1360</strong></p>
+<p>500年前，Jesse是我国最卓越的剑客。他英俊潇洒，而且机智过人^_^。<br>突然有一天，Jesse心爱的公主被魔王困在了一个巨大的迷宫中。Jesse听说这个消息已经是两天以后了，他知道公主在迷宫中还能坚持T天，他急忙赶到迷宫，开始到处寻找公主的下落。<br>时间一点一点的过去，Jesse还是无法找到公主。最后当他找到公主的时候，美丽的公主已经死了。从此Jesse郁郁寡欢，茶饭不思，一年后追随公主而去了。T_T<br>500年后的今天，Jesse托梦给你，希望你帮他判断一下当年他是否有机会在给定的时间内找到公主。<br>他会为你提供迷宫的地图以及所剩的时间T。请你判断他是否能救出心爱的公主。</p>
+<p><strong>输入</strong></p>
+<p>题目包括多组测试数据。<br>每组测试数据以三个整数N,M,T(0&lt;n, m&lt;=20, t&gt;0)开头，分别代表迷宫的长和高，以及公主能坚持的天数。<br>紧接着有M行，N列字符，由”.”，”*”，”P”，”S”组成。其中<br>“.” 代表能够行走的空地。<br>“*” 代表墙壁，Jesse不能从此通过。<br>“P” 是公主所在的位置。<br>“S” 是Jesse的起始位置。<br>每个时间段里Jesse只能选择上、下、左、右任意一方向走一步。<br>输入以0 0 0结束。</p>
+<p><strong>输出</strong></p>
+<p>如果能在规定时间内救出公主输出YES，否则输出NO。</p>
+<p><strong>样例输入</strong></p>
+<p>4 4 10<br>….<br>….<br>….<br>S**P<br>0 0 0</p>
+<p><strong>样例输出</strong></p>
+<p>YES</p>
+<hr>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">char</span> gra[<span class="number">25</span>][<span class="number">25</span>];			 <span class="comment">//地图</span></span><br><span class="line"><span class="keyword">bool</span> vis[<span class="number">25</span>][<span class="number">25</span>]=&#123;<span class="number">0</span>&#125;;                     <span class="comment">//判断点是否走过</span></span><br><span class="line"><span class="keyword">int</span> dir[<span class="number">4</span>][<span class="number">2</span>]=&#123;<span class="number">-1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">-1</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>&#125;;        <span class="comment">//走的方向</span></span><br><span class="line"><span class="keyword">int</span> m,n,t,<span class="built_in">step</span>;</span><br><span class="line"><span class="keyword">int</span> sy,sx;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">point</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> x,y,s;                            <span class="comment">//坐标，步长</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">BFS</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">queue</span>&lt;<span class="built_in">point</span>&gt; qu;                      </span><br><span class="line">    vis[sx][sy]=<span class="number">1</span>;</span><br><span class="line">    qu.push(&#123;sx,sy,<span class="number">0</span>&#125;);                  <span class="comment">//队列初始化</span></span><br><span class="line">    <span class="keyword">while</span>(!qu.empty())</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> y=qu.front().y,x=qu.front().x,s=qu.front().s;  <span class="comment">//返回队列的第一个元素</span></span><br><span class="line">        <span class="keyword">if</span>(gra[x][y]==<span class="string">'P'</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> s&lt;=<span class="built_in">step</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">4</span>;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            sy=y+dir[i][<span class="number">0</span>];</span><br><span class="line">            sx=x+dir[i][<span class="number">1</span>];</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span>(sx&lt;n &amp;&amp; sx&gt;=<span class="number">0</span> &amp;&amp; sy&lt;m &amp;&amp; sy&gt;=<span class="number">0</span></span><br><span class="line">               &amp;&amp; !vis[sx][sy] &amp;&amp; gra[sx][sy]!=<span class="string">'*'</span>)   <span class="comment">//在图内，未走过,且不为'*'</span></span><br><span class="line">            &#123;</span><br><span class="line"></span><br><span class="line">                vis[sx][sy]=<span class="number">1</span>;</span><br><span class="line">                qu.push(&#123;sx,sy,s+<span class="number">1</span>&#125;);           <span class="comment">//入队，并且步长+1</span></span><br><span class="line">                 <span class="comment">//printf("%d %d %d\n",sx,sy,s);</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        qu.pop();                               <span class="comment">//出队</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>,&amp;m,&amp;n,&amp;<span class="built_in">step</span>),m || n || <span class="built_in">step</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">memset</span>(vis,<span class="number">0</span>,<span class="keyword">sizeof</span>(vis));         <span class="comment">//初始化vis</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            getchar();</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;m;j++)</span><br><span class="line">            &#123;</span><br><span class="line">                gra[i][j]=getchar();</span><br><span class="line">                <span class="keyword">if</span>(gra[i][j]==<span class="string">'S'</span>)sx=i,sy=j;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">bool</span> f=BFS();</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%s\n"</span>,f? <span class="string">"YES"</span> : <span class="string">"NO"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" target="_blank" rel="noopener" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -172,19 +226,106 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" target="_blank" rel="noopener" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" target="_blank" rel="noopener" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;" target="_blank" rel="noopener"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/11/17/%E5%B9%BF%E6%90%9C%EF%BC%88BFS%EF%BC%89/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2019/11/17/%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2%EF%BC%88DFS%EF%BC%89/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">深搜</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -207,9 +348,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,

@@ -133,19 +133,19 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-demo" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-广搜（BFS）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/17/demo/">广搜</a>
+      <a class="article-title" href="/2019/11/17/%E5%B9%BF%E6%90%9C%EF%BC%88BFS%EF%BC%89/">广搜</a>
     </h1>
   
 
         
-        <a href="/2019/11/17/demo/" class="archive-article-date">
+        <a href="/2019/11/17/%E5%B9%BF%E6%90%9C%EF%BC%88BFS%EF%BC%89/" class="archive-article-date">
   	<time datetime="2019-11-17T07:33:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-17</time>
 </a>
         
@@ -153,10 +153,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>##广度优先搜索</p>
-<p>​    Breadth First Search，BFS是从根节点开始，沿着树的宽度遍历树的节点。如果所有节点均被访问，则算法中止。 是一种用于图的查找算法，可帮助回答两类问题:</p>
-<p>*<em>第一类问题: *</em>     从节点A出发，前往节点B的路径</p>
-<p>*<em>第二类问题: *</em>     从节点A出发，前往节点B的哪条路径最短</p>
+        <h2 id="广度优先搜索"><a href="#广度优先搜索" class="headerlink" title="广度优先搜索"></a>广度优先搜索</h2><p>Breadth First Search，BFS是从根节点开始，沿着树的宽度遍历树的节点。如果所有节点均被访问，则算法中止。 是一种用于图的查找算法，可帮助回答两类问题:</p>
+<p><strong>第一类问题:</strong>   从节点A出发，前往节点B的路径</p>
+<p><strong>第二类问题:</strong>   从节点A出发，前往节点B的哪条路径最短</p>
+<hr>
 <h2 id="1005-Hero-In-Maze"><a href="#1005-Hero-In-Maze" class="headerlink" title="1005: Hero In Maze"></a><strong>1005: Hero In Maze</strong></h2><p><strong>时间限制(普通/Java):1000MS/10000MS     内存限制:65536KByte总提交: 5700            测试通过:1360</strong></p>
 <p>500年前，Jesse是我国最卓越的剑客。他英俊潇洒，而且机智过人^_^。<br>突然有一天，Jesse心爱的公主被魔王困在了一个巨大的迷宫中。Jesse听说这个消息已经是两天以后了，他知道公主在迷宫中还能坚持T天，他急忙赶到迷宫，开始到处寻找公主的下落。<br>时间一点一点的过去，Jesse还是无法找到公主。最后当他找到公主的时候，美丽的公主已经死了。从此Jesse郁郁寡欢，茶饭不思，一年后追随公主而去了。T_T<br>500年后的今天，Jesse托梦给你，希望你帮他判断一下当年他是否有机会在给定的时间内找到公主。<br>他会为你提供迷宫的地图以及所剩的时间T。请你判断他是否能救出心爱的公主。</p>
 <p><strong>输入</strong></p>
@@ -167,6 +167,7 @@
 <p>4 4 10<br>….<br>….<br>….<br>S**P<br>0 0 0</p>
 <p><strong>样例输出</strong></p>
 <p>YES</p>
+<hr>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">char</span> gra[<span class="number">25</span>][<span class="number">25</span>];			 <span class="comment">//地图</span></span><br><span class="line"><span class="keyword">bool</span> vis[<span class="number">25</span>][<span class="number">25</span>]=&#123;<span class="number">0</span>&#125;;                     <span class="comment">//判断点是否走过</span></span><br><span class="line"><span class="keyword">int</span> dir[<span class="number">4</span>][<span class="number">2</span>]=&#123;<span class="number">-1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">-1</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>&#125;;        <span class="comment">//走的方向</span></span><br><span class="line"><span class="keyword">int</span> m,n,t,<span class="built_in">step</span>;</span><br><span class="line"><span class="keyword">int</span> sy,sx;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">point</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> x,y,s;                            <span class="comment">//坐标，步长</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">BFS</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">queue</span>&lt;<span class="built_in">point</span>&gt; qu;                      </span><br><span class="line">    vis[sx][sy]=<span class="number">1</span>;</span><br><span class="line">    qu.push(&#123;sx,sy,<span class="number">0</span>&#125;);                  <span class="comment">//队列初始化</span></span><br><span class="line">    <span class="keyword">while</span>(!qu.empty())</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> y=qu.front().y,x=qu.front().x,s=qu.front().s;  <span class="comment">//返回队列的第一个元素</span></span><br><span class="line">        <span class="keyword">if</span>(gra[x][y]==<span class="string">'P'</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> s&lt;=<span class="built_in">step</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">4</span>;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            sy=y+dir[i][<span class="number">0</span>];</span><br><span class="line">            sx=x+dir[i][<span class="number">1</span>];</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span>(sx&lt;n &amp;&amp; sx&gt;=<span class="number">0</span> &amp;&amp; sy&lt;m &amp;&amp; sy&gt;=<span class="number">0</span></span><br><span class="line">               &amp;&amp; !vis[sx][sy] &amp;&amp; gra[sx][sy]!=<span class="string">'*'</span>)   <span class="comment">//在图内，未走过,且不为'*'</span></span><br><span class="line">            &#123;</span><br><span class="line"></span><br><span class="line">                vis[sx][sy]=<span class="number">1</span>;</span><br><span class="line">                qu.push(&#123;sx,sy,s+<span class="number">1</span>&#125;);           <span class="comment">//入队，并且步长+1</span></span><br><span class="line">                 <span class="comment">//printf("%d %d %d\n",sx,sy,s);</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        qu.pop();                               <span class="comment">//出队</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>,&amp;m,&amp;n,&amp;<span class="built_in">step</span>),m || n || <span class="built_in">step</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">memset</span>(vis,<span class="number">0</span>,<span class="keyword">sizeof</span>(vis));         <span class="comment">//初始化vis</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            getchar();</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;m;j++)</span><br><span class="line">            &#123;</span><br><span class="line">                gra[i][j]=getchar();</span><br><span class="line">                <span class="keyword">if</span>(gra[i][j]==<span class="string">'S'</span>)sx=i,sy=j;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">bool</span> f=BFS();</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%s\n"</span>,f? <span class="string">"YES"</span> : <span class="string">"NO"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
@@ -206,7 +207,107 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/11/17/demo/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/11/17/%E5%B9%BF%E6%90%9C%EF%BC%88BFS%EF%BC%89/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-深度优先搜索（DFS）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/17/%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2%EF%BC%88DFS%EF%BC%89/">深搜</a>
+    </h1>
+  
+
+        
+        <a href="/2019/11/17/%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2%EF%BC%88DFS%EF%BC%89/" class="archive-article-date">
+  	<time datetime="2019-11-17T07:33:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-17</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="深度优先搜索（DFS）"><a href="#深度优先搜索（DFS）" class="headerlink" title="深度优先搜索（DFS）"></a>深度优先搜索（DFS）</h2><p>属于图算法的一种，英文缩写为DFS即Depth First Search.</p>
+<p>其过程简要来说是对每一个可能的分支路径深入到不能再深入为止，而且每个节点只能访问一次；</p>
+<p>深度优先遍历图的思想是，从图中某顶点v出发：</p>
+<p>（1）访问顶点v；</p>
+<p>（2）依次从v的未被访问的邻接点出发，对图进行深度优先遍历；直至图中和v有路径相通的顶点都被访问；</p>
+<p>（3）若此时图中尚有顶点未被访问，则从一个未被访问的顶点出发，重新进行深度优先遍历，直到图中所有顶点均被访问过为止。</p>
+<hr>
+<p>深搜通过向下深入，向上回溯的方式搜索，类似栈它的空间效率高，然则找到的不必定是最优解，所以一些深搜需要高效的剪枝（优化）</p>
+<p>深搜是通过函数的递归实现，所以递归次数过多，可能造成爆栈和超时，一般通过用栈模拟深搜过程防止爆栈，通过剪枝的方式防止超时。</p>
+<hr>
+<h2 id="2777-Hero-in-Maze-简单版"><a href="#2777-Hero-in-Maze-简单版" class="headerlink" title="2777: Hero in Maze 简单版"></a><strong>2777: Hero in Maze 简单版</strong></h2><p><strong>时间限制(普通/Java):1000MS/3000MS     内存限制:65536KByte总提交: 2145            测试通过:785</strong></p>
+<p>500年前，Jesse是我国最卓越的剑客。他英俊潇洒，而且机智过人^_^。突然有一天，Jesse心爱的公主被魔王困在了一个巨大的迷宫中。Jesse听说这个消息已经是两天以后了，他急忙赶到迷宫，开始到处寻找公主的下落。请你判断他是否能救出心爱的公主。(假设有路可以通到公主那就可以找到公主)。</p>
+<p><strong>输入</strong></p>
+<p>题目包括多组测试数据。<br>每组测试数据以两个整数n,m(0&lt;n, m≤20)开头，分别代表迷宫的长和高。紧接着有m行，n列字符，由”.”，”*”，”P”，”S”组成。其中<br>“.” 代表能够行走的空地。<br>“*” 代表墙壁，Jesse不能从此通过。<br>“P” 是公主所在的位置。<br>“S” 是Jesse的起始位置。<br>Jesse只能选择上、下、左、右任意一方向走一步。<br>输入以0 0结束。</p>
+<p><strong>输出</strong></p>
+<p>如果能救出公主输出YES，否则输出NO。</p>
+<p><strong>样例输入</strong></p>
+<p>4 4<br>….<br>….<br>….<br>S**P<br>4 4<br>….<br>….</p>
+<p><em>*\</em> *</p>
+<p>S**P<br>0 0</p>
+<p><strong>样例输出</strong></p>
+<p>YES<br>NO</p>
+<hr>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">char</span> q[<span class="number">25</span>][<span class="number">25</span>];</span><br><span class="line"><span class="keyword">int</span> sx,sy,px,py;     </span><br><span class="line"><span class="keyword">int</span> f,n,m;;</span><br><span class="line"><span class="keyword">int</span> x[]=&#123;<span class="number">1</span>,<span class="number">-1</span>,<span class="number">0</span>,<span class="number">0</span>&#125;;</span><br><span class="line"><span class="keyword">int</span> y[]=&#123;<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">-1</span>&#125;;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> xx,<span class="keyword">int</span> yy)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(xx==px &amp;&amp; yy==py )   <span class="comment">//如果找到返回</span></span><br><span class="line">    &#123;</span><br><span class="line">        f=<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">4</span>;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> dx=xx+x[i];</span><br><span class="line">        <span class="keyword">int</span> dy=yy+y[i];</span><br><span class="line">        <span class="keyword">if</span>(dx&lt;n &amp;&amp; dx&gt;=<span class="number">0</span> &amp;&amp; dy&lt;m &amp;&amp; dy&gt;=<span class="number">0</span> &amp;&amp; q[dx][dy]!=<span class="string">'*'</span>)  <span class="comment">//在图内且能走</span></span><br><span class="line">        &#123;</span><br><span class="line">            q[dx][dy]=<span class="string">'*'</span>;          <span class="comment">//图上修改为不能走</span></span><br><span class="line">            <span class="comment">///printf("%d %d\n",dx,dy);</span></span><br><span class="line">            dfs(dx,dy);            <span class="comment">//递归</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;n,&amp;m),n||m)</span><br><span class="line">    &#123;</span><br><span class="line">        f=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i =<span class="number">0</span>;i&lt;n;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            getchar();</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;m;j++)</span><br><span class="line">            &#123;</span><br><span class="line">                q[i][j]=getchar();</span><br><span class="line">                <span class="keyword">if</span>(q[i][j]==<span class="string">'S'</span>)sx=i,sy=j;</span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">if</span>(q[i][j]==<span class="string">'P'</span>)px=i,py=j;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        dfs(sx,sy);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%s\n"</span>,(f? <span class="string">"YES"</span>:<span class="string">"NO"</span>));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color3">深搜</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/11/17/%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2%EF%BC%88DFS%EF%BC%89/">展开全文 >></a>
         </p>
       
 
@@ -314,6 +415,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">广搜</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">深搜</a>
               </li>
             
             <div class="clearfix"></div>
