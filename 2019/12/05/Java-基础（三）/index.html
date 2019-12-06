@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="ZJH&#39;s Blog">
 <meta property="og:description" content="TreeSet">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-12-05T14:54:59.666Z">
+<meta property="og:updated_time" content="2019-12-06T08:22:06.821Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="ZJH&#39;s Blog" type="application/atom+xml">
@@ -227,6 +227,48 @@
 <li>类型通配符：<code>&lt;?&gt;</code></li>
 <li>List&lt;?&gt; : 表示元素类型未知的List，元素可以匹配<code>任何的类型</code></li>
 <li>这种带通配符的List仅表示它是各种泛型List的父类，并不能把元素添加到其中</li>
+</ul>
+<p><strong>类型通配符的上限</strong></p>
+<ul>
+<li>类型通配符上限：<code>&lt;? extends 类型&gt;</code></li>
+<li>List&lt;? extends Number&gt; : 表示的类型是<code>Number或者其子类型</code></li>
+</ul>
+<p><strong>类型通配符的下限</strong></p>
+<ul>
+<li>类型通配符下限：<code>&lt;? super 类型&gt;</code></li>
+<li>List&lt;? super Number&gt; : 表示的类型是<code>Number或者其父类型</code></li>
+</ul>
+<p><strong>可变参数</strong></p>
+<p>可变参数又称参数个数可变，用作方法的形参出现，那么方法参数个数就是可变的了</p>
+<ul>
+<li><p>格式： 修饰符  返回值类型  方法名 (数据类型… 变量名){ }</p>
+</li>
+<li><p>范例： </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">sum</span> <span class="params">(<span class="keyword">int</span>... a)</span> </span>&#123; &#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>可变参数注意事项</p>
+<ul>
+<li>这里的变量其实是一个数组</li>
+<li>如果一个方法有多个参数，包含可变参数，<code>可变参数要放在最后</code></li>
+</ul>
+<p><strong>可变参数的使用</strong></p>
+<p>Arrays工具类中有一个静态方法：</p>
+<ul>
+<li>public static &lt;T&gt; List &lt; T &gt; asList(T… a) : 返回由指定数组支持的固定大小的列表</li>
+<li>返回的集合不能做增删操作，可以做修改操作</li>
+</ul>
+<p>List接口中有一个静态方法：</p>
+<ul>
+<li>public static &lt;E&gt; List &lt; E &gt; of(E… elements) : 返回包含任意数量元素的不可变列表</li>
+<li>返回的集合不能做增删改操作</li>
+</ul>
+<p>Set接口中有一个静态方法：</p>
+<ul>
+<li>public static &lt;E&gt; Set &lt; E &gt; of(E… elements) : 返回一个包含任意数量元素的不可变集合</li>
+<li>给元素的时候，不能给重复的元素</li>
+<li>返回的集合不能做增删操作，没有修改的方法</li>
 </ul>
 
       
