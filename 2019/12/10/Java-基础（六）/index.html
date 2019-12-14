@@ -18,7 +18,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https:&#x2F;&#x2F;github.com&#x2F;zhoujiahao98&#x2F;MarkdownPhotos&#x2F;raw&#x2F;master&#x2F;img&#x2F;zijieliu.png">
 <meta property="og:image" content="https:&#x2F;&#x2F;github.com&#x2F;zhoujiahao98&#x2F;MarkdownPhotos&#x2F;raw&#x2F;master&#x2F;img&#x2F;zifuliu.png">
-<meta property="og:updated_time" content="2019-12-11T13:14:08.431Z">
+<meta property="og:updated_time" content="2019-12-14T14:18:52.891Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https:&#x2F;&#x2F;github.com&#x2F;zhoujiahao98&#x2F;MarkdownPhotos&#x2F;raw&#x2F;master&#x2F;img&#x2F;zijieliu.png">
   
@@ -205,6 +205,43 @@
 <p><img src="https://github.com/zhoujiahao98/MarkdownPhotos/raw/master/img/zifuliu.png" alt="字符流"></p>
 <p>实现字符流文件的复制</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//使用字符缓冲流特有的功能实现文件的复制</span></span><br><span class="line">BufferedReader br = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> FileReader(文件读入的路径));</span><br><span class="line">BufferedWriter bw = <span class="keyword">new</span> BufferedWriter(<span class="keyword">new</span> FileWriter(文件写出的路径));</span><br><span class="line"></span><br><span class="line">String line;</span><br><span class="line"><span class="keyword">while</span> ((line = br.readLine()) != <span class="keyword">null</span>) &#123;</span><br><span class="line">    bw.write(line);</span><br><span class="line">    bw.newLine();</span><br><span class="line">    bw.flush();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">bw.close();</span><br><span class="line">br.close();</span><br></pre></td></tr></table></figure>
+
+
+<p><strong>对象序列化流</strong></p>
+<p>对象序列化：就是将对象保存到磁盘中，或者网络中传输</p>
+<p>这种机制就是使用一个字节序列表示一个对象，该对象序列包含：对象的类型，对象的数据和对象中存储的属性等信息，字节序列化写到文件之后，相当于文件中持久保存了一个对象的信息。</p>
+<p>反之，反序列化就是从文件中读取出来，重构对象。</p>
+<p>ObjectOutputStream 和 ObjectInputStream </p>
+<p>构造方法</p>
+<ul>
+<li>ObjectOutputStream(OutputStream out): 创建一个写入指定的OutputStream的ObjectOutputStream</li>
+<li>ObjectInputStream(InputStream in): 创建一个指定的InputStream读取的ObjectInputStream</li>
+</ul>
+<p>(反)序列化对象的方法</p>
+<ul>
+<li>void writeObject(Object obj):  将指定的对象写入ObjectOutputStream</li>
+<li>Object readObject():  从ObjectInputStream读取一个对象</li>
+</ul>
+<p>注意</p>
+<ul>
+<li>一个对象想要序列化，该对象的类必须实现<code>Serializable</code> 接口，该接口是<code>标记接口</code>，不需要重写任何方法</li>
+<li>用对象序列化流序列化一个对象后，假如我们修改了对象的类文件，读取数据会抛出<code>InvalidClassException</code> 异常。这时我们可以给对象所属的类加一个<code>serialVersionUID</code> 例如： private static final long serialVersionUID = 42L;</li>
+<li>如果一个对象中的某个变成员量的值不想被序列化，可以给成员变量加<code>transient</code> 关键字修饰。</li>
+</ul>
+<p><strong>Properties</strong></p>
+<p>properties继承Hashtable,是Map体系的集合类。properties可以保存到流中或从流中加载。创建properties对象不用写泛型</p>
+<p>特有方法</p>
+<ul>
+<li>Object setProperty(String key,String value): 设置集合的键和值，都是String类型，底层调用Hashtable()方法put</li>
+<li>String getProperty(String key): 使用此属性列表中指定的键搜索属性</li>
+<li>Set&lt;String&gt; stringPropertNames()：从该属性列表中返回一个不可修改的键集，其中键机器对应的值是字符串</li>
+</ul>
+<p>properties和IO流结合的方法</p>
+<ul>
+<li>void load(Reader reader): 从输入字符流读取属性列表(键和元素对)</li>
+<li>void store(Writer writer,String comments): 将此属性列表(键和元素对)写入此Properties表中，以适合使用load(Reader)方法的格式写入输出字符流</li>
+</ul>
+
       
 
       
