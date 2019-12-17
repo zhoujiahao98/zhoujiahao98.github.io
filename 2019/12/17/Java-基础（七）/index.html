@@ -6,13 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives | ZJH&#39;s Blog</title>
+  <title>Java 基础（七） | ZJH&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="ZJH&#39;s Blog">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;archives&#x2F;page&#x2F;2&#x2F;index.html">
+  <meta name="description" content="网络编程">
+<meta name="keywords" content="Java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java 基础（七）">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;17&#x2F;Java-%E5%9F%BA%E7%A1%80%EF%BC%88%E4%B8%83%EF%BC%89&#x2F;index.html">
 <meta property="og:site_name" content="ZJH&#39;s Blog">
+<meta property="og:description" content="网络编程">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-12-17T13:42:02.243Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="ZJH&#39;s Blog" type="application/atom+xml">
@@ -144,142 +148,192 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-Java-基础（七）" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Java 基础（七）
+    </h1>
+  
+
+        
+        
+        <!-- 不蒜子统计 -->
+        <span id="busuanzi_container_page_pv" style='display:none' class="archive-article-date">
+              <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
+        </span>
+
+<a href="/2019/12/17/Java-%E5%9F%BA%E7%A1%80%EF%BC%88%E4%B8%83%EF%BC%89/" class="archive-article-date">
+  	<time datetime="2019-12-17T10:23:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-17</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="网络编程"><a href="#网络编程" class="headerlink" title="网络编程"></a>网络编程</h3><a id="more"></a>
+
+<p><strong>UDP</strong></p>
+<ul>
+<li>UDP协议是一种不可靠的网络协议，在通信的两端各建立一个Socket对象，但是这两个Socket只是发送，接收数据的对象，因此对于UDP协议而言，通信双方没有所谓的客户端和服务器的概念。</li>
+<li>Java提供了DatagramSocket类作为基于UDP协议的Socket</li>
+</ul>
+<p>UPD通信程序练习</p>
+<ul>
+<li><p>发送端</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * UDP发送数据</span></span><br><span class="line"><span class="comment"> *  数据来自键盘录入，直到输入的数据是886，发送数据结束</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SendDemo2</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">        <span class="comment">//创建发送端的Socket对象（DatagramSocket）</span></span><br><span class="line">        DatagramSocket ds=<span class="keyword">new</span> DatagramSocket();</span><br><span class="line">        <span class="comment">//自己封装键盘录入数据</span></span><br><span class="line">        BufferedReader br=<span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> InputStreamReader(System.in));</span><br><span class="line">        String line;</span><br><span class="line">        <span class="keyword">while</span> ((line=br.readLine())!=<span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(<span class="string">"886"</span>.equals(line))&#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//创建数据打包</span></span><br><span class="line">            <span class="comment">// new DatagramPacket(数据的字节数组, 字节数组长度, ip地址, 端口号);</span></span><br><span class="line">            <span class="keyword">byte</span>[] bys = line.getBytes();</span><br><span class="line">            DatagramPacket dp = <span class="keyword">new</span> DatagramPacket(bys, bys.length, InetAddress.getByName(<span class="string">"127.0.0.1"</span>), <span class="number">12345</span>);</span><br><span class="line">            <span class="comment">//发送数据</span></span><br><span class="line">            ds.send(dp);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//关闭发送端</span></span><br><span class="line">        ds.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>接收端</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * UPD接收数据</span></span><br><span class="line"><span class="comment"> *  因为接收端不知道发送端什么时候停止，故采用死循环</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ReceiveDemo2</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException</span>&#123;</span><br><span class="line">        <span class="comment">//创建接收端的Socket对象（DatagramSocket）</span></span><br><span class="line">        DatagramSocket ds=<span class="keyword">new</span> DatagramSocket(<span class="number">12345</span>);</span><br><span class="line">        <span class="comment">//因为接收端不知道发送端什么时候停止，故采用死循环</span></span><br><span class="line">        <span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</span><br><span class="line">            <span class="comment">//创建数据包，用于接收数据</span></span><br><span class="line">            <span class="keyword">byte</span>[] bys = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">1024</span>];</span><br><span class="line">            DatagramPacket dp = <span class="keyword">new</span> DatagramPacket(bys, bys.length);</span><br><span class="line">            <span class="comment">//接收数据</span></span><br><span class="line">            ds.receive(dp);</span><br><span class="line">            <span class="comment">//解析数据，将数据打印在控制台上</span></span><br><span class="line">            System.out.println(<span class="string">"数据是："</span> + <span class="keyword">new</span> String(dp.getData(), <span class="number">0</span>, dp.getLength()));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+<p><strong>TCP</strong></p>
+<ul>
+<li>TCP协议是一种可靠的网络协议，在通信的两端各建立一个Socket对象，从而在通信两端形成网络虚拟链路，一旦建立了虚拟的网络链路，两端的程序就可以通过虚拟链路进行通信。</li>
+<li>Java对基于TCP协议的网络提供了良好的封装，使用Socket对象来代表两端的通信端口，并通过Socket产生IO流来进行网络通信</li>
+<li>Java为客户端提供了Socket类，为服务器端提供了ServerSocket类</li>
+</ul>
+<p>TCP通信程序练习</p>
+<ul>
+<li><p>客户端</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 客户端： 数据来自键盘录入，直到输入的是886，发送数据结束</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ClientDemo</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">        <span class="comment">//创建客户端的Socket对象（Socket）</span></span><br><span class="line">        Socket s = <span class="keyword">new</span> Socket(<span class="string">"127.0.0.1"</span>, <span class="number">12345</span>);</span><br><span class="line">        <span class="comment">//数据来自键盘录入，直到输入的是886，发送数据结束</span></span><br><span class="line">        BufferedReader br = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> InputStreamReader(System.in));</span><br><span class="line">        <span class="comment">//封装输出流对象</span></span><br><span class="line">        BufferedWriter bw = <span class="keyword">new</span> BufferedWriter(<span class="keyword">new</span> OutputStreamWriter(s.getOutputStream()));</span><br><span class="line">        String line;</span><br><span class="line">        <span class="keyword">while</span> ((line = br.readLine()) != <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span>(<span class="string">"886"</span>.equals(line))&#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            bw.write(line);</span><br><span class="line">            bw.newLine();</span><br><span class="line">            bw.flush();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//释放资源</span></span><br><span class="line">        s.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+<ul>
+<li><p>服务器</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 服务器： 接收到的数据在控制台输出</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SeverDemo</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">        <span class="comment">//创建服务器端的Socket对象（ServerSocket）</span></span><br><span class="line">        ServerSocket ss = <span class="keyword">new</span> ServerSocket(<span class="number">12345</span>);</span><br><span class="line">        <span class="comment">//监听客户端连接，返回一个Socket对象</span></span><br><span class="line">        Socket s = ss.accept();</span><br><span class="line">        <span class="comment">//封装获取的输入流对象，读数据，打印在控制台</span></span><br><span class="line">        BufferedReader br = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> InputStreamReader(s.getInputStream()));</span><br><span class="line">        String line;</span><br><span class="line">        <span class="keyword">while</span> ((line = br.readLine()) != <span class="keyword">null</span>) &#123;</span><br><span class="line">            System.out.println(line);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//释放资源</span></span><br><span class="line">        ss.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2019/11/18/%E6%B7%B1%E6%90%9C%E7%BB%83%E4%B9%A01/" class="archive-article-date">
-  	<time datetime="2019-11-18T13:59:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-18</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/11/18/%E6%B7%B1%E6%90%9C%E7%BB%83%E4%B9%A01/">深搜练习1</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color3">深搜</a>
+        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color5">Java</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" target="_blank" rel="noopener" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" target="_blank" rel="noopener" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;" target="_blank" rel="noopener"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/12/17/Java-%E5%9F%BA%E7%A1%80%EF%BC%88%E4%B8%83%EF%BC%89/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2019/11/17/%E5%B9%BF%E6%90%9C%EF%BC%88BFS%EF%BC%89/" class="archive-article-date">
-  	<time datetime="2019-11-17T07:33:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-17</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2019/12/10/Java-%E5%9F%BA%E7%A1%80%EF%BC%88%E5%85%AD%EF%BC%89/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Java 基础（六）</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/11/17/%E5%B9%BF%E6%90%9C%EF%BC%88BFS%EF%BC%89/">广搜</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color3">广搜</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2019/11/17/%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2%EF%BC%88DFS%EF%BC%89/" class="archive-article-date">
-  	<time datetime="2019-11-17T07:33:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-17</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/11/17/%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2%EF%BC%88DFS%EF%BC%89/">深搜</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color3">深搜</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/">&amp;laquo; Prev</a><a class="page-number" href="/archives/">1</a><span class="page-number current">2</span>
-    </nav>
   
 
 
@@ -315,8 +369,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
