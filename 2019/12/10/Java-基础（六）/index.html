@@ -18,7 +18,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https:&#x2F;&#x2F;github.com&#x2F;zhoujiahao98&#x2F;MarkdownPhotos&#x2F;raw&#x2F;master&#x2F;img&#x2F;zijieliu.png">
 <meta property="og:image" content="https:&#x2F;&#x2F;github.com&#x2F;zhoujiahao98&#x2F;MarkdownPhotos&#x2F;raw&#x2F;master&#x2F;img&#x2F;zifuliu.png">
-<meta property="og:updated_time" content="2019-12-14T14:18:52.891Z">
+<meta property="og:updated_time" content="2019-12-20T08:37:54.232Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https:&#x2F;&#x2F;github.com&#x2F;zhoujiahao98&#x2F;MarkdownPhotos&#x2F;raw&#x2F;master&#x2F;img&#x2F;zijieliu.png">
   
@@ -238,8 +238,17 @@
 </ul>
 <p>properties和IO流结合的方法</p>
 <ul>
-<li>void load(Reader reader): 从输入字符流读取属性列表(键和元素对)</li>
-<li>void store(Writer writer,String comments): 将此属性列表(键和元素对)写入此Properties表中，以适合使用load(Reader)方法的格式写入输出字符流</li>
+<li><p>void load(Reader reader): 从输入字符流读取属性列表(键和元素对)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//把集合中的文件保存到文件</span></span><br><span class="line">Properties prop =<span class="keyword">new</span> Properties();</span><br><span class="line"></span><br><span class="line">prop.setProperty(<span class="string">"001"</span>,<span class="string">"aaa"</span>);</span><br><span class="line">prop.setProperty(<span class="string">"002"</span>,<span class="string">"bbb"</span>);</span><br><span class="line">prop.setProperty(<span class="string">"003"</span>,<span class="string">"ccc"</span>);</span><br><span class="line"></span><br><span class="line">FileWriter fw = <span class="keyword">new</span> FileWriter(<span class="string">"myCharStream\\fw.txt"</span>);</span><br><span class="line">prop.store(fw,<span class="keyword">null</span>);</span><br><span class="line">fw.close();</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>void store(Writer writer,String comments): 将此属性列表(键和元素对)写入此Properties表中，以适合使用load(Reader)方法的格式写入输出字符流</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//把文件中的数据加载到集合</span></span><br><span class="line">Properties prop=<span class="keyword">new</span> Properties();</span><br><span class="line">FileReader fr = <span class="keyword">new</span> FileReader(<span class="string">"myCharStream\\fw.txt"</span>);</span><br><span class="line">prop.load(fr);</span><br><span class="line">fr.close();</span><br><span class="line"></span><br><span class="line">System.out.println(prop);</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+</li>
 </ul>
 
       
